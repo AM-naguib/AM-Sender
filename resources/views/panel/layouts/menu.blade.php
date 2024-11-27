@@ -46,6 +46,18 @@
                             </a>
                         </li>
 
+                        <li class="nav-item">
+                            <a class="nav-link menu-link active" style="" href="{{route("panel.sender.single")}}">
+                                <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">Single Sender</span>
+                            </a>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a class="nav-link menu-link active" style="" href="{{route("panel.sender.bulk")}}">
+                                <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">Bulk Sender</span>
+                            </a>
+                        </li>
 
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="#sidebarDashboards" data-bs-toggle="collapse"

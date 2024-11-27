@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Panel\PanelController;
 use App\Http\Controllers\Panel\DeviceController;
+use App\Http\Controllers\Panel\SenderController;
 use App\Http\Controllers\Api\ApiHandelController;
 
 
@@ -30,30 +31,39 @@ Route::get('/', function () {
 
 Route::prefix("panel")->name("panel.")->middleware("auth")->group(function () {
     Route::get("/", [PanelController::class, "index"])->name("index");
+
     Route::get("/index", [PanelController::class, "index"])->name("index");
-
-
-
-    Route::resource("devices", DeviceController::class)->except("show");
-    Route::get("devices/{device}/scan", [DeviceController::class, "scan"])->name("devices.scan");
-
-
-
-
-
 
     Route::get("logs", [PanelController::class, "logs"])->name("logs");
 
+    Route::resource("devices", DeviceController::class)->except("show");
 
+    Route::get("devices/{device}/scan", [DeviceController::class, "scan"])->name("devices.scan");
+
+    Route::get("sender/single/", [SenderController::class, "single"])->name("sender.single");
+
+    Route::get("sender/bulk/", [SenderController::class, "bulkSend"])->name("sender.bulk");
+
+    Route::post("sender", [SenderController::class, "send"])->name("sender.send");
+
+
+    
+    
+    
+});
+
+Route::post("log/callback", [SenderController::class, "logCallback"])->name("log.callback");
+
+Route::post("ttt", function (Request $request) {
+    Log::info($request->all());
+    return true;
 });
 
 Route::post("device/status", function (Request $request) {
-    $data = $request->only(['session', 'status',"phone"]);
+    $data = $request->only(['session', 'status', "phone"]);
     Log::info($data);
     broadcast(new SessionStatusEvent($data));
 });
-
-
 
 
 

@@ -14,6 +14,8 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         "/test/*",
         "test",
-        "device/status"
+        "device/status",
+        "ttt",
+        "log-callback"
     ];
 }

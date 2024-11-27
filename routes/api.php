@@ -20,8 +20,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::post("device/register", [ApiHandelController::class, "registerDevice"])->name("device.register");
+Route::post("device/register", [ApiHandelController::class, "registerDevice"]);
 
 
-Route::post("send/message", [ApiHandelController::class, "sendMessage"])->name("device.register");
+Route::post("send/message", [ApiHandelController::class, "sendMessage"]);
 

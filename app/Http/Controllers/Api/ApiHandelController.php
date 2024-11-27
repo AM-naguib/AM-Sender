@@ -54,8 +54,9 @@ class ApiHandelController extends Controller
 
     public function sendMessage(Request $request)
     {
-        dd($request->all());
-        
+
+
+
         $user = User::where("auth_key", $request->auth_key)->first();
 
         if (!$user) {
@@ -82,17 +83,43 @@ class ApiHandelController extends Controller
             ]);
         }
 
-        $response = Http::get('http://localhost:3000/send', [
+        if(!is_array($request->receivers)){
+            return response()->json([
+                "status" => false,
+                "message" => "Receivers must be an array"
+            ]); 
+        }
+
+        if(strlen($request->message) <= 3){
+            
+            return response()->json([
+                "status" => false,
+                "message" => "Message must be at least 3 characters"
+            ]);
+        }
+        // $receivers_array = $this->changeReceiversToArray($request->receivers);
+        $response = Http::post('http://localhost:3000/send', [
             'sesId' => $device->id,
             'message' => $request->message,
-            'phone' => $request->phone,
+            'phones' => $request->receivers,
+            'delayTime' => $request->delayTime ?? 1000,
         ]);
-
-
 
 
     }
 
+
+
+    public function changeReceiversToArray($receivers)
+    {
+        if (is_array($receivers)) {
+            return $receivers;
+        }
+        $cleaned_receivers = preg_replace('/\s+/', '', $receivers);
+
+        $receivers_array = preg_split('/[,\\r\\n]/', $receivers, -1, PREG_SPLIT_NO_EMPTY);
+        return $receivers_array;
+    }
 
 
 }
