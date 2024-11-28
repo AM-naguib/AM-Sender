@@ -60,20 +60,30 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="#sidebarDashboards" data-bs-toggle="collapse"
-                                role="button" aria-expanded="false" aria-controls="sidebarDashboards">
-                                <i class="mdi mdi-speedometer"></i> <span data-key="t-dashboards">Dashboards</span>
+                            <a class="nav-link menu-link active" style="" href="{{route("panel.messages.index")}}">
+                                <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">Massages Log</span>
                             </a>
-                            <div class="collapse menu-dropdown" id="sidebarDashboards">
-                                <ul class="nav nav-sm flex-column">
-                                    <li class="nav-item">
-                                        <a href="dashboard-analytics-rtl.html" class="nav-link"
-                                            data-key="t-analytics"> Analytics </a>
-                                    </li>
+                        </li>
 
-                                </ul>
-                            </div>
-                        </li> <!-- end Dashboard Menu -->
+                        <li class="nav-item">
+                            <a class="nav-link menu-link active" style="" href="{{route("panel.massage-templates.index")}}">
+                                <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">Message Templates</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link menu-link active" style="" href="{{route("panel.profile.index")}}">
+                                <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">Profile</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link menu-link active" style="" href="{{route("panel.auth_key.index")}}">
+                                <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">Auth Key</span>
+                            </a>
+                        </li>
+
+
 
 
 

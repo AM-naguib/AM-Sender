@@ -16,6 +16,6 @@ class VerifyCsrfToken extends Middleware
         "test",
         "device/status",
         "ttt",
-        "log-callback"
+        "messages/callback"
     ];
 }

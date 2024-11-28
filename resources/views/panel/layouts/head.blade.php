@@ -19,3 +19,6 @@
 <link href="{{ asset('panel') }}/css/app.min.css" rel="stylesheet" type="text/css" />
 <!-- custom Css-->
 <link href="{{ asset('panel') }}/css/custom.min.css" rel="stylesheet" type="text/css" />
+
+
+<link rel="stylesheet" href="{{ asset('panel') }}/css/pagination.css">

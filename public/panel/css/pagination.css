@@ -1,0 +1,36 @@
+.pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+.pagination li {
+    margin: 0 5px;
+}
+
+.pagination li a {
+    text-decoration: none;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    color: #007bff;
+}
+
+.pagination li a:hover {
+    background-color: #f0f0f0;
+}
+
+.pagination .active span {
+    background-color: #007bff;
+    color: #fff;
+    border: 1px solid #007bff;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.pagination .disabled span {
+    color: #ccc;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}

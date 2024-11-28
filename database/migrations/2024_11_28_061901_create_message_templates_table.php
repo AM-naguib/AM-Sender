@@ -11,16 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('messages', function (Blueprint $table) {
-            $table->id();
-            $table->string("to");
-            $table->text('message');
-            $table->string("from");
-            $table->string("status");
+        Schema::create('message_templates', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->string("name");
+            $table->text("message");
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->uuid('device_id');
-            $table->foreign('device_id')->references('id')->on('devices');
-
             $table->timestamps();
         });
     }
@@ -30,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('messages');
+        Schema::dropIfExists('message_templates');
     }
 };

@@ -42,7 +42,7 @@
                                         </div>.
                                         <div class="col-8 mx-auto text-center">
                                             <a href="{{route("panel.sender.single")}}" class="btn btn-primary">Single Send</a>
-                                            <a href="{{route("panel.sender.bulk")}}" class="btn btn-primary">Bulk Send</a>
+                                            <a href="" class="btn btn-primary">Multiple Send</a>
                                         </div>
                                     @endif
                                 </div>
@@ -82,7 +82,7 @@
         var channel = pusher.subscribe('{{ $device->id }}');
         channel.bind('sessionstatus', function(data) {
         console.log(data);
-
+        
             $("#deviceStatus").load(location.href + " #deviceStatus");
 
         });

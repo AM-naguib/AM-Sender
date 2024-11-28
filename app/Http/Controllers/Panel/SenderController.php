@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Panel;
 
+use Log;
 use App\Models\Device;
+use App\Models\Message;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
 use Illuminate\Support\Facades\Http;
-use Log;
 
 class SenderController extends Controller
 {
@@ -43,18 +45,18 @@ class SenderController extends Controller
 
         $device = Device::where("id", $request->device_id)->first();
 
-        if($device->user_id != auth()->user()->id){
+        if ($device->user_id != auth()->user()->id) {
             return back()->with("error", "Device not found");
         }
 
 
-        if($device->status != "active"){
+        if ($device->status != "active") {
             return back()->with("error", "Device is not active");
         }
 
-        
+
         $receivers = $this->changeReceiversToArray($request->receivers);
-        
+
 
 
         $response = Http::post('http://localhost:3000/send', [
@@ -68,18 +70,19 @@ class SenderController extends Controller
 
     }
 
-public function messageCallback(Request $request){
+    public function messageCallback(Request $request)
+    {
 
-    $data = $request->validate([
-        "sessionId" => "required|exists:devices,id",
-        "message"=>"required",
-        "to"=>"required",
-        "from"=>"required",
-        "status"=>"required",
-    ]);
-    
-    Log::info($data);
-}
+        $data = $request->validate([
+            "sessionId" => "required|exists:devices,id",
+            "message" => "required",
+            "to" => "required",
+            "from" => "required",
+            "status" => "required",
+        ]);
+
+        Log::info($data);
+    }
     public function changeReceiversToArray($receivers)
     {
         if (is_array($receivers)) {
@@ -90,5 +93,9 @@ public function messageCallback(Request $request){
         $receivers_array = preg_split('/[,\\r\\n]/', $receivers, -1, PREG_SPLIT_NO_EMPTY);
         return $receivers_array;
     }
+
+
+
+
 
 }

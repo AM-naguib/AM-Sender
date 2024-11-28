@@ -87,17 +87,16 @@ class ApiHandelController extends Controller
             return response()->json([
                 "status" => false,
                 "message" => "Receivers must be an array"
-            ]); 
+            ]);
         }
 
         if(strlen($request->message) <= 3){
-            
+
             return response()->json([
                 "status" => false,
                 "message" => "Message must be at least 3 characters"
             ]);
         }
-        // $receivers_array = $this->changeReceiversToArray($request->receivers);
         $response = Http::post('http://localhost:3000/send', [
             'sesId' => $device->id,
             'message' => $request->message,

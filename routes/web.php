@@ -8,6 +8,8 @@ use App\Http\Controllers\Panel\PanelController;
 use App\Http\Controllers\Panel\DeviceController;
 use App\Http\Controllers\Panel\SenderController;
 use App\Http\Controllers\Api\ApiHandelController;
+use App\Http\Controllers\Panel\MessageController;
+use App\Http\Controllers\Panel\MessageTemplateController;
 
 
 /*
@@ -34,9 +36,11 @@ Route::prefix("panel")->name("panel.")->middleware("auth")->group(function () {
 
     Route::get("/index", [PanelController::class, "index"])->name("index");
 
-    Route::get("logs", [PanelController::class, "logs"])->name("logs");
+
 
     Route::resource("devices", DeviceController::class)->except("show");
+
+    Route::resource("massage-templates", MessageTemplateController::class)->except("show");
 
     Route::get("devices/{device}/scan", [DeviceController::class, "scan"])->name("devices.scan");
 
@@ -46,13 +50,21 @@ Route::prefix("panel")->name("panel.")->middleware("auth")->group(function () {
 
     Route::post("sender", [SenderController::class, "send"])->name("sender.send");
 
+    Route::get("messages", [MessageController::class, "index"])->name("messages.index");
 
-    
-    
-    
+    Route::get("profile", [PanelController::class, "profile"])->name("profile.index");
+
+    Route::post("profile", [PanelController::class, "profileUpdate"])->name("profile.update");
+
+    Route::get("auth_key", [PanelController::class, "authKey"])->name("auth_key.index");
+
+    Route::post("auth_key", [PanelController::class, "authKeyUpdate"])->name("auth_key.update");
+
+
+
 });
 
-Route::post("log/callback", [SenderController::class, "logCallback"])->name("log.callback");
+Route::post("messages/callback", [MessageController::class, "messagesCallback"])->name("messages.callback");
 
 Route::post("ttt", function (Request $request) {
     Log::info($request->all());
