@@ -36,52 +36,77 @@
 
 
                         <li class="nav-item">
-                            <a class="nav-link menu-link active" style="" href="{{route("panel.index")}}">
+                            <a class="nav-link menu-link active" style="" href="{{ route('panel.index') }}">
                                 <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">Dashboard</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link menu-link active" style="" href="{{route("panel.devices.index")}}">
+                            <a class="nav-link menu-link active" style=""
+                                href="{{ route('panel.devices.index') }}">
                                 <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">Devices</span>
                             </a>
                         </li>
 
+
                         <li class="nav-item">
-                            <a class="nav-link menu-link active" style="" href="{{route("panel.sender.single")}}">
+                            <a class="nav-link menu-link active" style=""
+                                href="{{ route('panel.contract-groups.index') }}">
+                                <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">Contract Groups</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link menu-link active" style=""
+                                href="{{ route('panel.contracts.index') }}">
+                                <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">Contract</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link menu-link active" style=""
+                                href="{{ route('panel.sender.single') }}">
                                 <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">Single Sender</span>
                             </a>
                         </li>
 
 
                         <li class="nav-item">
-                            <a class="nav-link menu-link active" style="" href="{{route("panel.sender.bulk")}}">
+                            <a class="nav-link menu-link active" style="" href="{{ route('panel.sender.bulk') }}">
                                 <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">Bulk Sender</span>
                             </a>
                         </li>
 
+
+
                         <li class="nav-item">
-                            <a class="nav-link menu-link active" style="" href="{{route("panel.messages.index")}}">
+                            <a class="nav-link menu-link active" style=""
+                                href="{{ route('panel.messages.index') }}">
                                 <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">Massages Log</span>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link menu-link active" style="" href="{{route("panel.massage-templates.index")}}">
-                                <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">Message Templates</span>
+                            <a class="nav-link menu-link active" style=""
+                                href="{{ route('panel.massage-templates.index') }}">
+                                <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">Message
+                                    Templates</span>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link menu-link active" style="" href="{{route("panel.profile.index")}}">
+                            <a class="nav-link menu-link active" style=""
+                                href="{{ route('panel.profile.index') }}">
                                 <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">Profile</span>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link menu-link active" style="" href="{{route("panel.auth_key.index")}}">
+                            <a class="nav-link menu-link active" style=""
+                                href="{{ route('panel.auth_key.index') }}">
                                 <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">Auth Key</span>
                             </a>
                         </li>
+
 
 
 

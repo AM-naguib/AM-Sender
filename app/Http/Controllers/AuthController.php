@@ -22,4 +22,9 @@ class AuthController extends Controller
         }
         return back()->with("error", "Username or password is incorrect");
     }
+
+    public function logout(){
+        auth()->logout();
+        return redirect()->route("login");
+    }
 }

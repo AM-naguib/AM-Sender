@@ -9,6 +9,8 @@ use App\Http\Controllers\Panel\DeviceController;
 use App\Http\Controllers\Panel\SenderController;
 use App\Http\Controllers\Api\ApiHandelController;
 use App\Http\Controllers\Panel\MessageController;
+use App\Http\Controllers\Panel\ContractController;
+use App\Http\Controllers\Panel\ContractGroupController;
 use App\Http\Controllers\Panel\MessageTemplateController;
 
 
@@ -41,6 +43,12 @@ Route::prefix("panel")->name("panel.")->middleware("auth")->group(function () {
     Route::resource("devices", DeviceController::class)->except("show");
 
     Route::resource("massage-templates", MessageTemplateController::class)->except("show");
+
+    Route::resource("contract-groups", ContractGroupController::class)->except("show");
+
+    Route::resource("contracts", ContractController::class)->except("show");
+
+    Route::post("contracts/import", [ContractController::class, "import"])->name("contracts.import");
 
     Route::get("devices/{device}/scan", [DeviceController::class, "scan"])->name("devices.scan");
 
@@ -81,6 +89,8 @@ Route::post("device/status", function (Request $request) {
 
 Route::get("login", [AuthController::class, "login"])->name("login")->middleware("guest");
 Route::post("login", [AuthController::class, "loginStore"])->name("login.store")->middleware("guest");
+
+Route::post("logout", [AuthController::class, "logout"])->name("logout")->middleware("auth");
 
 
 
