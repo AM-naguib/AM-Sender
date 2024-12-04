@@ -19,14 +19,14 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header d-flex justify-content-between align-items-center">
-                                <h4 class="card-title mb-0">Contracts</h4>
+                                <h4 class="card-title mb-0">Contacts</h4>
                                 <div class="btns">
 
-                                    <a href="{{ route('panel.contracts.create') }}" class="btn btn-primary">Create
-                                        Contract</a>
+                                    <a href="{{ route('panel.contacts.create') }}" class="btn btn-primary">Create
+                                        Contact</a>
                                     <button class="btn btn-primary" data-bs-toggle="modal"
                                         data-bs-target="#exampleModal">Import
-                                        Contracts</button>
+                                        Contacts</button>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -44,17 +44,17 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @forelse ($contracts as $contract)
+                                                    @forelse ($contacts as $contact)
                                                         <tr>
                                                             <td>{{ $loop->iteration }}</td>
-                                                            <td>{{ $contract->name }}</td>
-                                                            <td>{{ $contract->phone }}</td>
-                                                            <td>{{ $contract->contractGroup->name ?? '' }}</td>
+                                                            <td>{{ $contact->name }}</td>
+                                                            <td>{{ $contact->phone }}</td>
+                                                            <td>{{ $contact->contactGroup->name ?? '' }}</td>
                                                             <td class="d-flex gap-2">
-                                                                <a href="{{ route('panel.contracts.edit', $contract->id) }}"
+                                                                <a href="{{ route('panel.contacts.edit', $contact->id) }}"
                                                                     class="btn btn-primary">Edit</a>
                                                                 <form
-                                                                    action="{{ route('panel.contracts.destroy', $contract->id) }}"
+                                                                    action="{{ route('panel.contacts.destroy', $contact->id) }}"
                                                                     method="post">
                                                                     @csrf
                                                                     @method('delete')
@@ -80,7 +80,7 @@
                                 </div>
                                 <div class="row my-3">
                                     <div class="col-12">
-                                        {{ $contracts->links('vendor.pagination.custom') }}
+                                        {{ $contacts->links('vendor.pagination.custom') }}
 
                                     </div>
                                 </div>
@@ -110,22 +110,22 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Impor Contracts From File</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Impor Contacts From File</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route("panel.contracts.import") }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route("panel.contacts.import") }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
                             <label for="file" class="form-label">Select File</label>
                             <input type="file" name="file" accept=".xlsx,.xls,.csv" class="form-control">
                         </div>
                         <div class="mb-3">
-                            <label for="group" class="form-label">Select Contract Group</label>
-                            <select name="contract_group_id" id="" class="form-select">
+                            <label for="group" class="form-label">Select Contact Group</label>
+                            <select name="contact_group_id" id="" class="form-select">
                                 <option value=""></option>
-                                @foreach ($contractGroups as $contractGroup)
-                                    <option value="{{ $contractGroup->id }}">{{ $contractGroup->name }}</option>
+                                @foreach ($contactGroups as $contactGroup)
+                                    <option value="{{ $contactGroup->id }}">{{ $contactGroup->name }}</option>
                                 @endforeach
                             </select>
 

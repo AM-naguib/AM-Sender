@@ -26,7 +26,7 @@ class ApiHandelController extends Controller
             "user_id" => $user->id,
         ]);
 
-        $response = Http::get('http://localhost:3000/register', ['sesId' => $device->id]);
+        $response = Http::get(env("SENDER_URL").'/register', ['sesId' => $device->id]);
 
         $res = $response->json();
         if (!isset($res["qrCodeURL"])) {
@@ -97,7 +97,7 @@ class ApiHandelController extends Controller
                 "message" => "Message must be at least 3 characters"
             ]);
         }
-        $response = Http::post('http://localhost:3000/send', [
+        $response = Http::post(env("SENDER_URL")."/send", [
             'sesId' => $device->id,
             'message' => $request->message,
             'phones' => $request->receivers,

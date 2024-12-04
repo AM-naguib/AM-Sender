@@ -17,7 +17,7 @@
                         <img src="{{ asset('panel') }}/images/logo-sm.png" alt="" height="22">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ asset('panel') }}/images/logo-light.png" alt="" height="17">
+                        <p class="text-white m-0 fw-semibold " style="font-size: 30px;">AM-Sender</p>
                     </span>
                 </a>
                 <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover"
@@ -50,15 +50,15 @@
 
                         <li class="nav-item">
                             <a class="nav-link menu-link active" style=""
-                                href="{{ route('panel.contract-groups.index') }}">
-                                <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">Contract Groups</span>
+                                href="{{ route('panel.contact-groups.index') }}">
+                                <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">Contact Groups</span>
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link menu-link active" style=""
-                                href="{{ route('panel.contracts.index') }}">
-                                <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">Contract</span>
+                                href="{{ route('panel.contacts.index') }}">
+                                <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">Contact</span>
                             </a>
                         </li>
 

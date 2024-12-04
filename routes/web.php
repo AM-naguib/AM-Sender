@@ -7,10 +7,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Panel\PanelController;
 use App\Http\Controllers\Panel\DeviceController;
 use App\Http\Controllers\Panel\SenderController;
-use App\Http\Controllers\Api\ApiHandelController;
+use App\Http\Controllers\Panel\ContactController;
 use App\Http\Controllers\Panel\MessageController;
-use App\Http\Controllers\Panel\ContractController;
-use App\Http\Controllers\Panel\ContractGroupController;
+use App\Http\Controllers\Panel\ContactGroupController;
 use App\Http\Controllers\Panel\MessageTemplateController;
 
 
@@ -44,11 +43,11 @@ Route::prefix("panel")->name("panel.")->middleware("auth")->group(function () {
 
     Route::resource("massage-templates", MessageTemplateController::class)->except("show");
 
-    Route::resource("contract-groups", ContractGroupController::class)->except("show");
+    Route::resource("contact-groups", ContactGroupController::class)->except("show");
 
-    Route::resource("contracts", ContractController::class)->except("show");
+    Route::resource("contacts", ContactController::class)->except("show");
 
-    Route::post("contracts/import", [ContractController::class, "import"])->name("contracts.import");
+    Route::post("contrcts/import", [ContactController::class, "import"])->name("contacts.import");
 
     Route::get("devices/{device}/scan", [DeviceController::class, "scan"])->name("devices.scan");
 

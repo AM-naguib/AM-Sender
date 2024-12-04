@@ -19,8 +19,8 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header d-flex justify-content-between align-items-center">
-                                <h4 class="card-title mb-0">Contract Groups</h4>
-                                <a href="{{ route('panel.contract-groups.create') }}" class="btn btn-primary">Create Contract Group</a>
+                                <h4 class="card-title mb-0">Contact Groups</h4>
+                                <a href="{{ route('panel.contact-groups.create') }}" class="btn btn-primary">Create Contact Group</a>
                             </div>
                             <div class="card-body">
                                 <div class="row">
@@ -31,19 +31,19 @@
                                                     <tr>
                                                         <th scope="col">#</th>
                                                         <th scope="col">name</th>
-                                                        <th scope="col">Count Cotracts</th>
+                                                        <th scope="col">Count Contacts</th>
                                                         <th scope="col">Actions</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @forelse ($contractGroups as $group)
+                                                    @forelse ($contactGroups as $group)
                                                     <tr>
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $group->name }}</td>
-                                                        <td>{{ $group->contracts->count() }}</td>
+                                                        <td>{{ $group->contacts->count() }}</td>
                                                         <td class="d-flex gap-2">
-                                                            <a href="{{ route('panel.contract-groups.edit', $group->id) }}" class="btn btn-primary">Edit</a>
-                                                            <form action="{{ route('panel.contract-groups.destroy', $group->id) }}" method="post">
+                                                            <a href="{{ route('panel.contact-groups.edit', $group->id) }}" class="btn btn-primary">Edit</a>
+                                                            <form action="{{ route('panel.contact-groups.destroy', $group->id) }}" method="post">
                                                                 @csrf
                                                                 @method('delete')
                                                                 <button class="btn btn-danger">Delete</button>
@@ -69,7 +69,7 @@
                                 </div>
                                 <div class="row my-3">
                                     <div class="col-12">
-                                        {{ $contractGroups->links('vendor.pagination.custom') }}
+                                        {{ $contactGroups->links('vendor.pagination.custom') }}
 
                                     </div>
                                 </div>

@@ -67,7 +67,7 @@ class DeviceController extends Controller
         if($device->user_id != auth()->user()->id){
             abort(403);
         }
-        $url = 'http://localhost:3000/register';
+        $url = env("SENDER_URL").'/register';
         $params = [
             'sesId' => $device->id
         ];

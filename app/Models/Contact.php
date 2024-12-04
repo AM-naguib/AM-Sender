@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Contract extends Model
+class Contact extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    public function contractGroup(){
-        return $this->belongsTo(ContractGroup::class);
+    public function contactGroup(){
+        return $this->belongsTo(ContactGroup::class);
     }
 
     public function user(){

@@ -19,21 +19,38 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title mb-0">Edit Contract Group</h4>
+                                <h4 class="card-title mb-0">Create Contact Group</h4>
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <form action="{{ route('panel.contract-groups.update', $contractGroup) }}" method="POST">
+                                    <div class="col-md-4 col-12 mx-auto">
+
+                                        @if (session('success'))
+                                            <div class="alert alert-success">
+                                                {{ session('success') }}
+                                            </div>
+                                        @endif
+                                        @if ($errors->any())
+                                            <div class="alert alert-danger">
+                                                <ul>
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif
+                                    </div>
+                                    <form action="{{ route('panel.contact-groups.store') }}" method="POST">
                                         @csrf
-                                        @method('PUT')
                                         <div class="col-md-4 col-12 mx-auto">
                                             <div class="mb-3">
-                                                <label for="name" class="form-label">Template Name</label>
+                                                <label for="name" class="form-label">Group Name</label>
                                                 <input name="name" id="name" class="form-control"
-                                                    placeholder="Template Name" value="{{ $contractGroup->name }}" required>
+                                                    placeholder="Enter Group Name" required>
                                             </div>
 
-                                            <button type="submit" class="form-control bg-primary text-white">Edit</button>
+                                            <button type="submit" class="form-control bg-primary text-white">Create</button>
+
 
                                         </div>
                                     </form>

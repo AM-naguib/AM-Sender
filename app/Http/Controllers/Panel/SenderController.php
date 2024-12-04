@@ -59,7 +59,7 @@ class SenderController extends Controller
 
 
 
-        $response = Http::post('http://localhost:3000/send', [
+        $response = Http::post(env("SENDER_URL").'/send', [
             'sesId' => $device->id,
             'message' => $request->message,
             'phones' => $receivers,
