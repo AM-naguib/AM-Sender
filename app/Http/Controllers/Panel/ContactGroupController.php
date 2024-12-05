@@ -75,7 +75,6 @@ class ContactGroupController extends Controller
             "name" => $data["name"],
         ]);
         return redirect()->route("panel.contact-groups.index")->with("success", "Contact group updated successfully");
-        dd("hi"); 
     }
 
     /**

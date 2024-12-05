@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Http;
 class DeviceController extends Controller
 {
     public function index(){
-        $devices = Device::where("user_id", auth()->user()->id)->get();
+        $devices = Device::latest()->where("user_id", auth()->user()->id)->get();
         return view("panel.devices.index", compact("devices"));
     }
 
