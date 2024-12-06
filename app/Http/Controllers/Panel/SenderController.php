@@ -64,7 +64,7 @@ class SenderController extends Controller
             'sesId' => $device->id,
             'message' => $request->message,
             'phones' => $receivers,
-            'delayTime' => $request->delay_time ?? 1000,
+            'delayTime' => $request->delay_time ?? rand(1000, 2500),
         ]);
 
         if ($response->failed()) {
