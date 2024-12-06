@@ -40,7 +40,8 @@ class SenderController extends Controller
         $data = $request->validate([
             "device_id" => "required",
             "receivers" => "required",
-            "message" => "required|string|min:3"
+            "message" => "required|string|min:3",
+            "delay_time" => "nullable|numeric"
         ]);
 
         $device = Device::where("id", $request->device_id)->first();
@@ -63,8 +64,12 @@ class SenderController extends Controller
             'sesId' => $device->id,
             'message' => $request->message,
             'phones' => $receivers,
-            'delayTime' => $request->delayTime ?? 1000,
+            'delayTime' => $request->delay_time ?? 1000,
         ]);
+
+        if ($response->failed()) {
+            return back()->with("error", "Failed to send message");
+        }
 
         return back()->with("success", "Message sent successfully");
 

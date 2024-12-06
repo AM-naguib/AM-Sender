@@ -25,7 +25,7 @@
                                 <div class="row" id="deviceStatus">
                                     @if (!isset($res['status']))
                                         <div class="col-12 text-center">
-                                            <img src="{{ $res['qrCodeURL'] }}" alt="">
+                                            <img src="{{ $res['qrCodeURL'] ?? "" }}" alt="">
                                         </div>
                                         <div class="col-12 text-center p-2">
                                             <h1>How to scan</h1>

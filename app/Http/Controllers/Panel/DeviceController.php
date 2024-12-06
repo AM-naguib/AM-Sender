@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Panel;
 
 
+use App\Models\User;
 use App\Models\Device;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -12,6 +13,8 @@ class DeviceController extends Controller
 {
     public function index(){
         $devices = Device::latest()->where("user_id", auth()->user()->id)->get();
+
+
         return view("panel.devices.index", compact("devices"));
     }
 
@@ -75,7 +78,7 @@ class DeviceController extends Controller
 
         $response = Http::get($url, $params);
 
-
+        $res = null;
         if ($response->successful()) {
             $res =  $response->json();
         }
