@@ -47,7 +47,7 @@ Route::prefix("panel")->name("panel.")->middleware("auth")->group(function () {
 
     Route::resource("contacts", ContactController::class)->except("show");
 
-    Route::post("contrcts/import", [ContactController::class, "import"])->name("contacts.import");
+    Route::post("contacts/import", [ContactController::class, "import"])->name("contacts.import");
 
     Route::get("devices/{device}/scan", [DeviceController::class, "scan"])->name("devices.scan");
 

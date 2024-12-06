@@ -40,6 +40,18 @@
                                                 </select>
                                             </div>
                                             <div class="mb-3">
+                                                <label for="" class="form-label">Select Contact Group</label>
+                                                <select name="" id="" class="form-select" onchange="importContactsToTextarea(this.value)">
+                                                    <option value=""></option>
+
+                                                    @forelse ($contactGroups as $group)
+                                                        <option value="{{ $group->contacts->pluck('phone') }}">{{ $group->name }}</option>
+                                                    @empty
+                                                    @endforelse
+                                                </select>
+
+                                            </div>
+                                            <div class="mb-3">
                                                 <label for="receiver" class="form-label">Receivers</label>
                                                 <textarea type="text" class="form-control" name="receivers" id="receiver"
                                                     placeholder="Enter receivers Without +, One number per line">{{ old('receivers') }}</textarea>
@@ -79,4 +91,20 @@
         <!-- End Page-content -->
 
     </div>
+@endsection
+
+
+@section('js')
+<script>
+    function importContactsToTextarea(data){
+        $("#receiver").val("");
+        if(data == '') return;
+        data = JSON.parse(data);
+        if(data.length > 0){
+            $("#receiver").val(data.join('\n'));
+
+        }
+    }
+
+</script>
 @endsection

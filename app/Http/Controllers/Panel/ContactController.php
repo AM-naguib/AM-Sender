@@ -111,15 +111,13 @@ class ContactController extends Controller
     {
         $request->validate([
             'file' => 'required|mimes:xlsx,xls,csv',
-            'contact_group_id' => 'nullable|exists:contact_groups,id', // التأكد من أن contact_group_id صحيح
+            'contact_group_id' => 'nullable|exists:contact_groups,id',
         ]);
-
         $contactGroupId = $request->input('contact_group_id');
 
-        // استيراد البيانات
+
         $import = new ContactsImport($contactGroupId);
 
-        // تنفيذ الاستيراد
         Excel::import($import, $request->file('file'));
 
         return back()->with('success', 'تم استيراد البيانات بنجاح!');

@@ -13,7 +13,7 @@ class ContactsImport implements ToModel
 
     public function __construct($contactGroupId = null)
     {
-        $this->contrctGroupId = $contactGroupId;
+        $this->contactGroupId = $contactGroupId;
     }
 
     public function model(array $row)

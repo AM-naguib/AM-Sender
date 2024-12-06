@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Panel;
 use Log;
 use App\Models\Device;
 use App\Models\Message;
+use App\Models\ContactGroup;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
 
 class SenderController extends Controller
@@ -28,8 +29,9 @@ class SenderController extends Controller
     public function bulkSend()
     {
         $devices = Device::where("user_id", auth()->user()->id)->where("status", "active")->get();
+        $contactGroups = ContactGroup::where("user_id", auth()->user()->id)->with("contacts")->get();
 
-        return view("panel.sender.bulk", compact("devices"));
+        return view("panel.sender.bulk", compact("devices", "contactGroups"));
     }
 
 
