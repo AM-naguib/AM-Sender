@@ -46,6 +46,8 @@ class SenderController extends Controller
             "delay_time" => "nullable|numeric"
         ]);
 
+
+
         $device = Device::where("id", $request->device_id)->first();
 
         if ($device->user_id != auth()->user()->id) {
@@ -61,6 +63,7 @@ class SenderController extends Controller
 
         $receivers = $this->changeReceiversToArray($request->receivers);
 
+        $receivers = array_map('trim', $receivers);
 
 
         $response = Http::post(env("SENDER_URL").'/send', [
