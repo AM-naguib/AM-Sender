@@ -50,6 +50,7 @@ class SenderController extends Controller
             return back()->with("error", "Device not found");
         }
 
+        $deley_time = $request->delay_time * 1000 ?? rand(1000, 2500);
 
         if ($device->status != "active") {
             return back()->with("error", "Device is not active");
@@ -64,7 +65,7 @@ class SenderController extends Controller
             'sesId' => $device->id,
             'message' => $request->message,
             'phones' => $receivers,
-            'delayTime' => $request->delay_time ?? rand(1000, 2500),
+            'delayTime' => $deley_time,
         ]);
 
         if ($response->failed()) {

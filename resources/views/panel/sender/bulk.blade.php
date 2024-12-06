@@ -50,7 +50,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="delay" class="form-label">Delay</label>
-                                                <input type="number" class="form-control" name="delay_time" id="delay" placeholder="Default 1s , 1s=1000ms" >
+                                                <input type="number" class="form-control" name="delay_time" id="delay" placeholder="Ender Delay With Seconds ,Default 1" >
                                             </div>
                                             <div class="mb-3">
                                                 <button type="submit"
