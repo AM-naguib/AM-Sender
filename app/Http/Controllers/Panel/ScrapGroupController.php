@@ -29,12 +29,10 @@ class ScrapGroupController extends Controller
             "device" => "required|exists:devices,id",
         ]);
 
-        // استدعاء الـ API
         $response = Http::get(env("SENDER_URL") . '/session/groups/members', [
             'sesId' => $data["device"],
         ]);
 
-        // تحقق من الاستجابة
         if (!$response->successful()) {
             Log::error("Error Scraping group", ['device' => $data["device"], 'response' => $response->body()]);
             return back()->with("error", "Error Scraping group. Status: " . $response->status());
@@ -42,13 +40,11 @@ class ScrapGroupController extends Controller
 
         $groups = json_decode($response->body(), true);
 
-        // تحقق من البيانات المستلمة
         if (empty($groups['groups'])) {
             return back()->with("error", "Group is empty or invalid response");
         }
 
         foreach ($groups['groups'] as $group) {
-            // إنشاء ContactGroup
             $contactGroup = ContactGroup::create([
                 "user_id" => auth()->user()->id,
                 "name" => $group["name"],
@@ -90,19 +86,16 @@ class ScrapGroupController extends Controller
 
     public function update(Request $request, Group $group)
     {
-        // تحقق من صلاحية المستخدم
         if ($group->user_id != auth()->user()->id) {
             abort(403, "Unauthorized");
         }
 
-        // استدعاء الـ API مع التعامل مع الأخطاء
         try {
             $response = Http::get(env("SENDER_URL") . '/group/members', [
                 'sesId' => $group->device_id,
                 'groupId' => $group->username
             ]);
 
-            // تحقق من الاستجابة
             if (!$response->successful()) {
                 Log::error("Error Scraping group", ['device' => $group->device_id, 'response' => $response->body()]);
                 return back()->with("error", "Error Scraping group. Status: " . $response->status());
@@ -110,12 +103,10 @@ class ScrapGroupController extends Controller
 
             $groupData = json_decode($response->body(), true);
 
-            // تحقق من وجود الأعضاء
             if (empty($groupData['members'])) {
                 return back()->with("errors", "Group is empty or invalid response");
             }
 
-            // تحديث بيانات المجموعة
             $group->update([
                 "name" => $groupData["groupName"],
             ]);
@@ -135,7 +126,6 @@ class ScrapGroupController extends Controller
 
 
         } catch (\Exception $e) {
-            // التعامل مع أي أخطاء أثناء الاتصال بالـ API أو العملية
             Log::error("Exception occurred while updating group", ['error' => $e->getMessage()]);
             return back()->with("error", "An error occurred while processing the request.");
         }
