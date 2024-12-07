@@ -50,6 +50,15 @@
 
                         <li class="nav-item">
                             <a class="nav-link menu-link active" style=""
+                                href="{{ route('panel.groups.index') }}">
+                                <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">Groups Scraper</span>
+                            </a>
+                        </li>
+
+
+
+                        <li class="nav-item">
+                            <a class="nav-link menu-link active" style=""
                                 href="{{ route('panel.contact-groups.index') }}">
                                 <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">Contact Groups</span>
                             </a>

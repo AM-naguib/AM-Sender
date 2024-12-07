@@ -9,6 +9,7 @@ use App\Http\Controllers\Panel\DeviceController;
 use App\Http\Controllers\Panel\SenderController;
 use App\Http\Controllers\Panel\ContactController;
 use App\Http\Controllers\Panel\MessageController;
+use App\Http\Controllers\Panel\ScrapGroupController;
 use App\Http\Controllers\Panel\ContactGroupController;
 use App\Http\Controllers\Panel\MessageTemplateController;
 
@@ -66,6 +67,9 @@ Route::prefix("panel")->name("panel.")->middleware("auth")->group(function () {
     Route::get("auth_key", [PanelController::class, "authKey"])->name("auth_key.index");
 
     Route::post("auth_key", [PanelController::class, "authKeyUpdate"])->name("auth_key.update");
+
+    Route::resource("groups", ScrapGroupController::class);
+    
 
 
 
