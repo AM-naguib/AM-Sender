@@ -8,6 +8,7 @@ use App\Models\Message;
 use App\Models\ContactGroup;
 use Illuminate\Http\Request;
 
+use App\Models\MessageTemplate;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
 
@@ -29,9 +30,10 @@ class SenderController extends Controller
     public function bulkSend()
     {
         $devices = Device::where("user_id", auth()->user()->id)->where("status", "active")->get();
+        $messageTemplates = MessageTemplate::where("user_id", auth()->user()->id)->get();
         $contactGroups = ContactGroup::where("user_id", auth()->user()->id)->with("contacts")->get();
 
-        return view("panel.sender.bulk", compact("devices", "contactGroups"));
+        return view("panel.sender.bulk", compact("devices", "contactGroups", "messageTemplates"));
     }
 
 

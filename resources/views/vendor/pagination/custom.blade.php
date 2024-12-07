@@ -5,7 +5,7 @@
             @if ($paginator->onFirstPage())
                 <li class="disabled"><span>&laquo;</span></li>
             @else
-                <li><a href="{{ $paginator->previousPageUrl() }}" rel="prev">&laquo;</a></li>
+                <li><a href="{{ $paginator->previousPageUrl() . '&' . http_build_query(request()->except('page')) }}" rel="prev">&laquo;</a></li>
             @endif
 
             {{-- روابط الصفحات --}}
@@ -19,7 +19,7 @@
                         @if ($page == $paginator->currentPage())
                             <li class="active"><span>{{ $page }}</span></li>
                         @else
-                            <li><a href="{{ $url }}">{{ $page }}</a></li>
+                            <li><a href="{{ $url . '&' . http_build_query(request()->except('page')) }}">{{ $page }}</a></li>
                         @endif
                     @endforeach
                 @endif
@@ -27,7 +27,7 @@
 
             {{-- رابط الصفحة التالية --}}
             @if ($paginator->hasMorePages())
-                <li><a href="{{ $paginator->nextPageUrl() }}" rel="next">&raquo;</a></li>
+                <li><a href="{{ $paginator->nextPageUrl() . '&' . http_build_query(request()->except('page')) }}" rel="next">&raquo;</a></li>
             @else
                 <li class="disabled"><span>&raquo;</span></li>
             @endif

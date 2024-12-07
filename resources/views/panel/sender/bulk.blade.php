@@ -58,6 +58,22 @@
                                                 <textarea type="text" class="form-control" name="receivers" id="receiver"
                                                     placeholder="Enter receivers Without +, One number per line">{{ old('receivers') }}</textarea>
                                             </div>
+
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">Select Message Template</label>
+                                                <select class=" form-select" id="select-messageTemplet"
+                                                    onchange="importMessageToTextarea(this.value)">
+                                                    <option value=""></option>
+
+                                                    @forelse ($messageTemplates as $messageTemplate)
+                                                        <option value="{{ $messageTemplate->message }}">
+                                                            {{ $messageTemplate->name }}</option>
+                                                    @empty
+                                                    @endforelse
+                                                </select>
+
+                                            </div>
+
                                             <div class="mb-3">
                                                 <label for="message" class="form-label">Message</label>
                                                 <textarea type="text" class="form-control" name="message" id="message" placeholder="Enter Message">{{ old('message') }}</textarea>
@@ -109,6 +125,15 @@
         }
 
 
+         function importMessageToTextarea(data) {
+            $("#receiver").val("");
+            if (data == '') return;
+            data = JSON.parse(data);
+            if (data.length > 0) {
+                $("#receiver").val(data.join('\n'));
+            }
+        }
+
 
         $(document).ready(function() {
             new TomSelect("#select-beast", {
@@ -120,6 +145,14 @@
             });
 
             new TomSelect("#device-select", {
+                create: false,
+                sortField: {
+
+                    direction: "asc"
+                }
+            });
+
+            new TomSelect("#select-messageTemplet", {
                 create: false,
                 sortField: {
 
