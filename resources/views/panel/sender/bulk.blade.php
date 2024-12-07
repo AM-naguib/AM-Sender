@@ -28,8 +28,8 @@
                                         <div class="col-md-4 col-12 mx-auto">
 
                                             <div class="mb-3">
-                                                <label for="" class="form-label">Select Device</label>
-                                                <select name="device_id" id="device-select" class="form-select">
+                                                <label for="" class="form-label required">Select Device</label>
+                                                <select name="device_id" id="device-select" class="form-select" required>
                                                     @forelse ($devices as $device)
                                                         <option
                                                             value="{{ $device->id }}"{{ old('device_id') == $device->id ? 'selected' : '' }}>
@@ -54,9 +54,9 @@
 
                                             </div>
                                             <div class="mb-3">
-                                                <label for="receiver" class="form-label">Receivers</label>
-                                                <textarea type="text" class="form-control" name="receivers" id="receiver"
-                                                    placeholder="Enter receivers Without +, One number per line">{{ old('receivers') }}</textarea>
+                                                <label for="receiver" class="form-label required">Receivers</label>
+                                                <textarea type="text" class="form-control" name="receivers" id="receiver" rows="9"
+                                                    placeholder="Enter receivers Without +, One number per line" required>{{ old('receivers') }}</textarea>
                                             </div>
 
                                             <div class="mb-3">
@@ -75,13 +75,13 @@
                                             </div>
 
                                             <div class="mb-3">
-                                                <label for="message" class="form-label">Message</label>
-                                                <textarea type="text" class="form-control" name="message" id="message" placeholder="Enter Message">{{ old('message') }}</textarea>
+                                                <label for="message" class="form-label required">Message</label>
+                                                <textarea required type="text" class="form-control" rows="9" name="message" id="message" placeholder="Enter Message">{{ old('message') }}</textarea>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="delay" class="form-label">Delay</label>
                                                 <input type="number" class="form-control" name="delay_time" id="delay"
-                                                    placeholder="Ender Delay With Seconds ,Default 1">
+                                                    placeholder="Enter Delay With Seconds ,Default 1">
                                             </div>
                                             <div class="mb-3">
                                                 <button type="submit"
@@ -126,11 +126,10 @@
 
 
          function importMessageToTextarea(data) {
-            $("#receiver").val("");
+            $("#message").val("");
             if (data == '') return;
-            data = JSON.parse(data);
             if (data.length > 0) {
-                $("#receiver").val(data.join('\n'));
+                $("#message").val(data);
             }
         }
 
