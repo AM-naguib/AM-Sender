@@ -67,8 +67,8 @@
                                                                     @method('delete')
                                                                     <button class="btn btn-danger">Delete</button>
                                                                 </form>
-                                                                <a href="{{ route('panel.groups.update', $group->id) }}"
-                                                                    class="btn btn-primary">View</a>
+                                                                <a href="{{ route('panel.contacts.index', ['cg' => $group->contact_group_id]) }}" class="btn btn-primary">View</a>
+
                                                             </td>
 
                                                         </tr>
