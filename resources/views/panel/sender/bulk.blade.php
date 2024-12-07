@@ -41,7 +41,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Select Contact Group</label>
-                                                <select class=" form-select"
+                                                <select class=" form-select" id="selectElement"
                                                     onchange="importContactsToTextarea(this.value)">
                                                     <option value=""></option>
 
@@ -98,21 +98,27 @@
 
 
 @section('js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+
 
     <script>
-
-        $(document).ready(function() {
-
-            function importContactsToTextarea(data) {
-                $("#receiver").val("");
-                if (data == '') return;
-                data = JSON.parse(data);
-                if (data.length > 0) {
-                    $("#receiver").val(data.join('\n'));
-                }
+        function importContactsToTextarea(data) {
+            $("#receiver").val("");
+            if (data == '') return;
+            data = JSON.parse(data);
+            if (data.length > 0) {
+                $("#receiver").val(data.join('\n'));
             }
-        });
+        }
+
+
+
+        // $(document).ready(function() {
+
+        //     new SlimSelect({
+        //         select: '#selectElement'
+        //     })
+        // });
     </script>
 @endsection
