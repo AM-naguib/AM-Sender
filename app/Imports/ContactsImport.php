@@ -19,8 +19,8 @@ class ContactsImport implements ToModel
     public function model(array $row)
     {
         return new Contact([
-            'name' => $row[0],
-            'phone' => $row[1],
+            'name' => $row[0] ?? '',
+            'phone' => $row[1] ?? '',
             'contact_group_id' => $this->contactGroupId,
             "user_id" => auth()->user()->id
         ]);
