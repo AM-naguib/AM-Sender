@@ -29,7 +29,7 @@
 
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Select Device</label>
-                                                <select name="device_id" id="" class="form-select">
+                                                <select name="device_id" id="device-select" class="form-select">
                                                     @forelse ($devices as $device)
                                                         <option
                                                             value="{{ $device->id }}"{{ old('device_id') == $device->id ? 'selected' : '' }}>
@@ -41,7 +41,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Select Contact Group</label>
-                                                <select class=" form-select" id="selectElement"
+                                                <select class=" form-select" id="select-beast"
                                                     onchange="importContactsToTextarea(this.value)">
                                                     <option value=""></option>
 
@@ -98,10 +98,6 @@
 
 
 @section('js')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
-
-
-
     <script>
         function importContactsToTextarea(data) {
             $("#receiver").val("");
@@ -114,11 +110,22 @@
 
 
 
-        // $(document).ready(function() {
+        $(document).ready(function() {
+            new TomSelect("#select-beast", {
+                create: false,
+                sortField: {
 
-        //     new SlimSelect({
-        //         select: '#selectElement'
-        //     })
-        // });
+                    direction: "asc"
+                }
+            });
+
+            new TomSelect("#device-select", {
+                create: false,
+                sortField: {
+
+                    direction: "asc"
+                }
+            });
+        });
     </script>
 @endsection

@@ -11,18 +11,21 @@ use Illuminate\Support\Facades\Http;
 
 class DeviceController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $devices = Device::latest()->where("user_id", auth()->user()->id)->get();
 
 
         return view("panel.devices.index", compact("devices"));
     }
 
-    public function create(){
+    public function create()
+    {
         return view("panel.devices.create");
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $data = $request->validate([
             "name" => "required",
         ]);
@@ -35,15 +38,17 @@ class DeviceController extends Controller
     }
 
 
-    public function edit(Device $device){
-        if($device->user_id != auth()->user()->id){
+    public function edit(Device $device)
+    {
+        if ($device->user_id != auth()->user()->id) {
             abort(403);
         }
         return view("panel.devices.edit", compact("device"));
     }
 
-    public function update(Request $request,Device $device){
-        if($device->user_id != auth()->user()->id){
+    public function update(Request $request, Device $device)
+    {
+        if ($device->user_id != auth()->user()->id) {
             abort(403);
         }
 
@@ -57,8 +62,9 @@ class DeviceController extends Controller
         return redirect()->route("panel.devices.index");
     }
 
-    public function destroy(Device $device){
-        if($device->user_id != auth()->user()->id){
+    public function destroy(Device $device)
+    {
+        if ($device->user_id != auth()->user()->id) {
             abort(403);
         }
         $device->delete();
@@ -66,11 +72,12 @@ class DeviceController extends Controller
     }
 
 
-    public function scan(Device $device){
-        if($device->user_id != auth()->user()->id){
+    public function scan(Device $device)
+    {
+        if ($device->user_id != auth()->user()->id) {
             abort(403);
         }
-        $url = env("SENDER_URL").'/register';
+        $url = env("SENDER_URL") . '/register';
         $params = [
             'sesId' => $device->id
         ];
@@ -80,7 +87,7 @@ class DeviceController extends Controller
 
         $res = null;
         if ($response->successful()) {
-            $res =  $response->json();
+            $res = $response->json();
         }
 
 
