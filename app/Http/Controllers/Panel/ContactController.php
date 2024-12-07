@@ -20,7 +20,6 @@ class ContactController extends Controller
 
         if($request->cg != null){
             $contacts = Contact::where("user_id", auth()->user()->id)->where("contact_group_id", $request->cg)->paginate(20);
-            // dd($contacts);
         }else{
             $contacts = Contact::where("user_id", auth()->user()->id)->paginate(20);
 
