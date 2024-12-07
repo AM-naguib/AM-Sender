@@ -41,11 +41,13 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Select Contact Group</label>
-                                                <select name="" id="" class="form-select" onchange="importContactsToTextarea(this.value)">
+                                                <select class=" form-select"
+                                                    onchange="importContactsToTextarea(this.value)">
                                                     <option value=""></option>
 
                                                     @forelse ($contactGroups as $group)
-                                                        <option value="{{ $group->contacts->pluck('phone') }}">{{ $group->name }}</option>
+                                                        <option value="{{ $group->contacts->pluck('phone') }}">
+                                                            {{ $group->name }}</option>
                                                     @empty
                                                     @endforelse
                                                 </select>
@@ -62,7 +64,8 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="delay" class="form-label">Delay</label>
-                                                <input type="number" class="form-control" name="delay_time" id="delay" placeholder="Ender Delay With Seconds ,Default 1" >
+                                                <input type="number" class="form-control" name="delay_time" id="delay"
+                                                    placeholder="Ender Delay With Seconds ,Default 1">
                                             </div>
                                             <div class="mb-3">
                                                 <button type="submit"
@@ -95,16 +98,21 @@
 
 
 @section('js')
-<script>
-    function importContactsToTextarea(data){
-        $("#receiver").val("");
-        if(data == '') return;
-        data = JSON.parse(data);
-        if(data.length > 0){
-            $("#receiver").val(data.join('\n'));
 
-        }
-    }
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
 
-</script>
+    <script>
+
+        $(document).ready(function() {
+
+            function importContactsToTextarea(data) {
+                $("#receiver").val("");
+                if (data == '') return;
+                data = JSON.parse(data);
+                if (data.length > 0) {
+                    $("#receiver").val(data.join('\n'));
+                }
+            }
+        });
+    </script>
 @endsection

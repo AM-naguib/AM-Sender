@@ -33,7 +33,7 @@
                                                     <p class="fw-medium text-muted mb-0">Phone : {{ $device->phone ?? '' }}
                                                     </p>
                                                     <h2 class="mt-4 ff-secondary fw-semibold"><span class="counter-value"
-                                                            data-target="234">0</span>k</h2>
+                                                            data-target="{{$device->messages->count()}}">0</span></h2>
                                                     <p class="mb-0 text-muted"><span
                                                             class="badge bg-light {{ $device->status == 'active' ? 'text-success' : 'text-danger' }} mb-0">{{ $device->status }}</span>
                                                     </p>

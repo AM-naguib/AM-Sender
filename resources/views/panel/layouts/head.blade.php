@@ -22,3 +22,4 @@
 
 
 <link rel="stylesheet" href="{{ asset('panel') }}/css/pagination.css">
+

@@ -37,8 +37,8 @@
                                                 <thead class="table-light">
                                                     <tr>
                                                         <th scope="col">#</th>
-                                                        <th scope="col">name</th>
-                                                        <th scope="col">phone</th>
+                                                        <th scope="col">Name</th>
+                                                        <th scope="col">Phone</th>
                                                         <th scope="col">Group</th>
                                                         <th scope="col">Actions</th>
                                                     </tr>
