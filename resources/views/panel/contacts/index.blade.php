@@ -33,8 +33,13 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="table-responsive">
-                                        @include('panel.validation-show.index')
+                                            @include('panel.validation-show.index')
+                                            <div class="search text-center py-2">
+                                                @if (request()->has('cg') && $searchName != null)
+                                                    <h4>Search : {{ $searchName->name }}</h4>
+                                                @endif
 
+                                            </div>
                                             <table class="table align-middle mb-0" id="messages">
                                                 <thead class="table-light">
                                                     <tr>
@@ -116,7 +121,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route("panel.contacts.import") }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('panel.contacts.import') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
                             <label for="file" class="form-label">Select File</label>

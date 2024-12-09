@@ -20,7 +20,8 @@
                         <div class="card">
                             <div class="card-header d-flex justify-content-between align-items-center">
                                 <h4 class="card-title mb-0">Contact Groups</h4>
-                                <a href="{{ route('panel.contact-groups.create') }}" class="btn btn-primary">Create Contact Group</a>
+                                <a href="{{ route('panel.contact-groups.create') }}" class="btn btn-primary">Create Contact
+                                    Group</a>
                             </div>
                             <div class="card-body">
                                 <div class="row">
@@ -37,26 +38,31 @@
                                                 </thead>
                                                 <tbody>
                                                     @forelse ($contactGroups as $group)
-                                                    <tr>
-                                                        <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $group->name }}</td>
-                                                        <td>{{ $group->contacts->count() }}</td>
-                                                        <td class="d-flex gap-2">
-                                                            <a href="{{ route('panel.contact-groups.edit', $group->id) }}" class="btn btn-primary">Edit</a>
-                                                            <form action="{{ route('panel.contact-groups.destroy', $group->id) }}" method="post">
-                                                                @csrf
-                                                                @method('delete')
-                                                                <button class="btn btn-danger">Delete</button>
-                                                            </form>
-                                                        </td>
+                                                        <tr>
+                                                            <td>{{ $loop->iteration }}</td>
+                                                            <td>{{ $group->name }}</td>
+                                                            <td>{{ $group->contacts->count() }}</td>
+                                                            <td class="d-flex gap-2">
+                                                                <a href="{{ route('panel.contacts.index', ['cg' => $group->id]) }}"
+                                                                    class="btn btn-info">View</a>
 
-                                                    </tr>
+                                                                <a href="{{ route('panel.contact-groups.edit', $group->id) }}"
+                                                                    class="btn btn-primary">Edit</a>
+                                                                <form
+                                                                    action="{{ route('panel.contact-groups.destroy', $group->id) }}"
+                                                                    method="post">
+                                                                    @csrf
+                                                                    @method('delete')
+                                                                    <button class="btn btn-danger">Delete</button>
+                                                                </form>
+                                                            </td>
+
+                                                        </tr>
 
                                                     @empty
-                                                    <tr>
-                                                        <td colspan="6" class="text-center">No Messages</td>
-                                                    </tr>
-
+                                                        <tr>
+                                                            <td colspan="6" class="text-center">No Messages</td>
+                                                        </tr>
                                                     @endforelse
                                                 </tbody>
 
@@ -94,4 +100,3 @@
 
     </div>
 @endsection
-

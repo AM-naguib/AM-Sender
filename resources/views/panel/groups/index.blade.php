@@ -56,6 +56,8 @@
                                                             <td>{{ $group->device->name }}</td>
                                                             <td>{{ $group->updated_at->diffForHumans() }}</td>
                                                             <td class="d-flex gap-2">
+                                                                <a href="{{ route('panel.contacts.index', ['cg' => $group->contact_group_id]) }}" class="btn btn-info">View</a>
+
                                                                 <form action="{{ route('panel.groups.update', $group->id) }}" method="post">
                                                                     @csrf
                                                                     @method('put')
@@ -69,7 +71,6 @@
                                                                     @method('delete')
                                                                     <button class="btn btn-danger">Delete</button>
                                                                 </form>
-                                                                <a href="{{ route('panel.contacts.index', ['cg' => $group->contact_group_id]) }}" class="btn btn-primary">View</a>
 
                                                             </td>
 
