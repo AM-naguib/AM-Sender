@@ -26,7 +26,7 @@
                                     <div class="col-md-4 col-12 mx-auto">
 
                                         @include('panel.validation-show.index')
-                                      
+
                                     </div>
                                     <form action="{{ route('panel.contacts.store') }}" method="POST">
                                         @csrf
@@ -43,8 +43,9 @@
                                             </div>
 
                                             <div class="mb-3">
-                                                <label for="contact_group_id" class="form-label">Select Contact Group</label>
-                                                <select name="contact_group_id" id="" class="form-select">
+                                                <label for="contact_group_id" class="form-label">Select Contact
+                                                    Group</label>
+                                                <select name="contact_group_id" id="contact-group-select" class="form-select">
                                                     <option value=""></option>
                                                     @foreach ($contactGroups as $group)
                                                         <option value="{{ $group->id }}">{{ $group->name }}
@@ -53,7 +54,8 @@
                                                 </select>
                                             </div>
 
-                                            <button type="submit" class="form-control bg-primary text-white">Create</button>
+                                            <button type="submit"
+                                                class="form-control bg-primary text-white">Create</button>
 
 
                                         </div>
@@ -80,4 +82,19 @@
         <!-- End Page-content -->
 
     </div>
+@endsection
+
+
+@section('js')
+    <script>
+        $(document).ready(function() {
+            new TomSelect("#contact-group-select", {
+                create: false,
+                sortField: {
+
+                    direction: "asc"
+                }
+            });
+        });
+    </script>
 @endsection
