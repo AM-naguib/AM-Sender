@@ -14,7 +14,9 @@
                 <!-- Light Logo-->
                 <a href="index.html" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="{{ asset('panel') }}/images/logo-sm.png" alt="" height="22">
+                        <p class="text-white m-0 fw-semibold " style="font-size: 30px;">AM</p>
+
+                        {{-- <img src="{{ asset('panel') }}/images/logo-sm.png" alt="" height="22"> --}}
                     </span>
                     <span class="logo-lg">
                         <p class="text-white m-0 fw-semibold " style="font-size: 30px;">AM-Sender</p>
