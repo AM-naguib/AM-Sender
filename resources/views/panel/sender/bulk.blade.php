@@ -77,7 +77,8 @@
 
                                             <div class="mb-3">
                                                 <label for="message" class="form-label required">Message</label>
-                                                <textarea required type="text" class="form-control" rows="9" name="message" id="message" placeholder="Enter Message">{{ old('message') }}</textarea>
+                                                <textarea required type="text" class="form-control" rows="9" name="message" id="message"
+                                                    placeholder="Enter Message">{{ old('message') }}</textarea>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="delay" class="form-label">Delay</label>
@@ -85,8 +86,8 @@
                                                     placeholder="Enter Delay With Seconds ,Default 1">
                                             </div>
                                             <div class="mb-3">
-                                                <button type="submit"
-                                                    class="form-control bg-primary text-white">Send</button>
+                                                <button type="submit" class="form-control bg-primary text-white"
+                                                    id="myButton" onclick="disableButton()">Send</button>
                                             </div>
                                         </div>
                                     </form>
@@ -116,6 +117,10 @@
 
 @section('js')
     <script>
+        function disableButton() {
+            document.getElementById("myButton").disabled = true;
+        }
+
         function importContactsToTextarea(data) {
             $("#receiver").val("");
             if (data == '') return;
@@ -126,7 +131,7 @@
         }
 
 
-         function importMessageToTextarea(data) {
+        function importMessageToTextarea(data) {
             $("#message").val("");
             if (data == '') return;
             if (data.length > 0) {
