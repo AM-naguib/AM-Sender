@@ -33,6 +33,8 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="table-responsive">
+                                        @include('panel.validation-show.index')
+
                                             <table class="table align-middle mb-0" id="messages">
                                                 <thead class="table-light">
                                                     <tr>

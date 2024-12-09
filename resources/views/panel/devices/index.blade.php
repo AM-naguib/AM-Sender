@@ -23,6 +23,8 @@
                         </div>
 
                         <div class="row">
+                            @include('panel.validation-show.index')
+
                             @forelse ($devices as $device)
                                 <div class="col-xxl-3 col-sm-6">
                                     <div class="card card-animate">

@@ -25,20 +25,8 @@
                                 <div class="row">
                                     <div class="col-md-4 col-12 mx-auto">
 
-                                        @if (session('success'))
-                                            <div class="alert alert-success">
-                                                {{ session('success') }}
-                                            </div>
-                                        @endif
-                                        @if ($errors->any())
-                                            <div class="alert alert-danger">
-                                                <ul>
-                                                    @foreach ($errors->all() as $error)
-                                                        <li>{{ $error }}</li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
-                                        @endif
+                                        @include('panel.validation-show.index')
+                                      
                                     </div>
                                     <form action="{{ route('panel.contact-groups.store') }}" method="POST">
                                         @csrf

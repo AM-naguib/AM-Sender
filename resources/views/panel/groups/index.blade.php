@@ -35,6 +35,8 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-12">
+                                        @include('panel.validation-show.index')
+
                                         <div class="table-responsive">
                                             <table class="table align-middle mb-0" id="messages">
                                                 <thead class="table-light">

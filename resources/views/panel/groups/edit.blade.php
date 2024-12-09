@@ -27,6 +27,8 @@
                                         @csrf
                                         @method("PUT")
                                         <div class="col-md-4 col-12 mx-auto">
+                                            @include('panel.validation-show.index')
+
                                             <div class="mb-3">
                                                 <label for="name" class="form-label">Name</label>
                                                 <input name="name" id="name" class="form-control"

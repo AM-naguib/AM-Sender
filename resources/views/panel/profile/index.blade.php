@@ -43,6 +43,7 @@
                                     <form action="{{ route('panel.profile.update') }}" method="POST">
                                         @csrf
                                         <div class="col-md-4 col-12 mx-auto">
+                                            @include('panel.validation-show.index')
 
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Name</label>

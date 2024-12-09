@@ -23,6 +23,9 @@
                             </div>
                             <div class="card-body">
                                 <form action="{{ route('panel.devices.update', $device->id) }}" method="POST">
+                                    <div class="col-md-4 col-12 mx-auto">
+                                        @include('panel.validation-show.index')
+
                                     @csrf
                                     @method('PUT')
                                     <div class="mb-3">
@@ -31,6 +34,7 @@
                                             placeholder="Name" required value="{{ $device->name }}">
                                     </div>
                                     <button type="submit" class="btn btn-primary">Create</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>

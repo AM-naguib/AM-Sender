@@ -26,13 +26,15 @@
                                     <form action="{{ route('panel.sender.send') }}" method="POST">
                                         @csrf
                                         <div class="col-md-4 col-12 mx-auto">
+                                            @include('panel.validation-show.index')
+
 
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Select Device</label>
                                                 <select name="device_id" id="" class="form-select">
                                                     @forelse ($devices as $device)
-                                                        <option value="{{ $device->id }}">{{ $device->name }}</option>
-
+                                                        <option @selected($device->id == old('device_id')) value="{{ $device->id }}">
+                                                            {{ $device->name }}</option>
                                                     @empty
                                                     @endforelse
                                                 </select>
@@ -40,11 +42,12 @@
                                             <div class="mb-3">
                                                 <label for="receiver" class="form-label">Receiver</label>
                                                 <input type="text" class="form-control" name="receivers" id="receiver"
-                                                    placeholder="Enter receiver Without +, ex 20101234567">
+                                                    placeholder="Enter receiver Without +, ex 20101234567"
+                                                    value="{{ old('receivers') }}">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="message" class="form-label">Message</label>
-                                                <textarea type="text" class="form-control" name="message" placeholder="Enter Message"></textarea>
+                                                <textarea type="text" class="form-control" name="message" placeholder="Enter Message">{{ old('message') }}</textarea>
                                             </div>
                                             <div class="mb-3">
                                                 <button type="submit"

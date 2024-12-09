@@ -24,12 +24,16 @@
                             <div class="card-body">
                                 <form action="{{ route('panel.devices.store') }}" method="POST">
                                     @csrf
-                                    <div class="mb-3">
-                                        <label for="name" class="form-label">Name</label>
-                                        <input type="text" name="name" class="form-control" id="name"
-                                            placeholder="Name" required>
+                                    <div class="col-md-4 col-12 mx-auto">
+                                        @include('panel.validation-show.index')
+
+                                        <div class="mb-3">
+                                            <label for="name" class="form-label">Name</label>
+                                            <input type="text" name="name" class="form-control" id="name"
+                                                placeholder="Name" required>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Create</button>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Create</button>
                                 </form>
                             </div>
                         </div>
@@ -51,7 +55,4 @@
         <!-- End Page-content -->
 
     </div>
-
-
 @endsection
-

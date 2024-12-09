@@ -43,6 +43,8 @@
                                     <form action="{{ route('panel.massage-templates.store') }}" method="POST">
                                         @csrf
                                         <div class="col-md-4 col-12 mx-auto">
+                                            @include('panel.validation-show.index')
+
                                             <div class="mb-3">
                                                 <label for="name" class="form-label">Template Name</label>
                                                 <input name="name" id="name" class="form-control"
