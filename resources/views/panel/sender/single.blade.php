@@ -43,11 +43,11 @@
                                                 <label for="receiver" class="form-label">Receiver</label>
                                                 <input type="text" class="form-control" name="receivers" id="receiver"
                                                     placeholder="Enter receiver Without +, ex 20101234567"
-                                                    value="{{ old('receivers') }}">
+                                                    value="{{ old('receivers') }}" required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="message" class="form-label">Message</label>
-                                                <textarea type="text" class="form-control" name="message" placeholder="Enter Message">{{ old('message') }}</textarea>
+                                                <textarea required type="text" class="form-control" name="message" placeholder="Enter Message">{{ old('message') }}</textarea>
                                             </div>
                                             <div class="mb-3">
                                                 <button type="submit"

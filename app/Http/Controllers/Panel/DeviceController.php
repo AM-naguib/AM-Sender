@@ -78,12 +78,17 @@ class DeviceController extends Controller
             abort(403);
         }
         $url = env("SENDER_URL") . '/register';
+
         $params = [
             'sesId' => $device->id
         ];
 
+        try {
+            $response = Http::get($url, $params);
+        } catch (\Exception $e) {
+            return back()->withErrors(['Error in server']);
+        }
 
-        $response = Http::get($url, $params);
 
         $res = null;
         if ($response->successful()) {
