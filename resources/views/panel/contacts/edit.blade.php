@@ -32,7 +32,7 @@
                                             <div class="mb-3">
                                                 <label for="name" class="form-label">Name</label>
                                                 <input name="name" id="name" class="form-control"
-                                                    placeholder="Enter Contact Name" required value="{{ $contact->name }}">
+                                                    placeholder="Enter Contact Name"  value="{{ $contact->name }}">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="name" class="form-label">Phone</label>

@@ -46,15 +46,15 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            "name" => "required",
-            "phone" => "required",
+            "name" => "nullable",
+            "phone" => "required|integer",
             "contact_group_id" => "nullable|exists:contact_groups,id",
 
         ]);
 
 
         Contact::create([
-            "name" => $data["name"],
+            "name" => $data["name"] ?? "",
             "phone" => $data["phone"],
             "contact_group_id" => $data["contact_group_id"],
             "user_id" => auth()->user()->id
@@ -88,14 +88,14 @@ class ContactController extends Controller
         }
 
         $data = $request->validate([
-            "name" => "required",
-            "phone" => "required",
+            "name" => "nullable",
+            "phone" => "required|integer",
             "contact_group_id" => "nullable|exists:contact_groups,id",
 
         ]);
 
         $contact->update([
-            "name" => $data["name"],
+            "name" => $data["name"] ?? "",
             "phone" => $data["phone"],
             "contact_group_id" => $data["contact_group_id"],
         ]);
