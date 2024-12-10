@@ -51,7 +51,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <button type="submit"
-                                                    class="form-control bg-primary text-white" id="myButton" onclick="disableButton()">Send</button>
+                                                    class="form-control bg-primary text-white" >Send</button>
                                             </div>
                                         </div>
                                     </form>
@@ -80,8 +80,6 @@
 
 @section('js')
     <script>
-        function disableButton() {
-            document.getElementById("myButton").disabled = true;
-        }
+
     </script>
 @endsection
