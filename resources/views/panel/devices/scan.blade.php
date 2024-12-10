@@ -23,6 +23,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="row" id="deviceStatus">
+                                    <h3 class="text-center py-2 d-inline-block">Device Name : {{ $device->name }}</h3>
                                     @if (!isset($res['status']))
                                         <div class="col-12 text-center">
                                             <img src="{{ $res['qrCodeURL'] ?? "" }}" alt="">
