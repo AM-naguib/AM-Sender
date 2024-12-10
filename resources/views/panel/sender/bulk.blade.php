@@ -30,10 +30,10 @@
 
                                             <div class="mb-3">
                                                 <label for="" class="form-label required">Select Device</label>
-                                                <select name="device_id" id="device-select" class="form-select" required>
+                                                <select name="device_ids[]" id="device-select" class="form-select" required>
                                                     @forelse ($devices as $device)
                                                         <option
-                                                            value="{{ $device->id }}"{{ old('device_id') == $device->id ? 'selected' : '' }}>
+                                                            value="{{ $device->id }}">
                                                             {{ $device->name }}</option>
 
                                                     @empty
@@ -86,8 +86,8 @@
                                                     placeholder="Enter Delay With Seconds ,Default 1">
                                             </div>
                                             <div class="mb-3">
-                                                <button type="submit" class="form-control bg-primary text-white"
-                                                   >Send</button>
+                                                <button type="submit"
+                                                    class="form-control bg-primary text-white">Send</button>
                                             </div>
                                         </div>
                                     </form>
@@ -117,8 +117,6 @@
 
 @section('js')
     <script>
-
-
         function importContactsToTextarea(data) {
             $("#receiver").val("");
             if (data == '') return;
@@ -150,10 +148,13 @@
             new TomSelect("#device-select", {
                 create: false,
                 sortField: {
-
                     direction: "asc"
-                }
+                },
+                maxItems: null,
+                plugins: ['remove_button'],
+                multiple: true
             });
+
 
             new TomSelect("#select-messageTemplet", {
                 create: false,

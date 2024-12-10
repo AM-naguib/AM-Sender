@@ -42,7 +42,7 @@ class SenderController extends Controller
 
 
         $data = $request->validate([
-            "device_id" => "required",
+            "device_ids" => "required",
             "receivers" => "required",
             "message" => "required|string|min:3",
             "delay_time" => "nullable|numeric"
@@ -50,17 +50,20 @@ class SenderController extends Controller
 
 
 
-        $device = Device::where("id", $request->device_id)->first();
+        $devices = Device::whereIn('id', $request->device_ids)
+            ->where('user_id', auth()->user()->id)
+            ->where('status', 'active')
+            ->get();
 
-        if ($device->user_id != auth()->user()->id) {
-            return back()->with("error", "Device not found");
+        if ($devices->count() != count($request->device_ids)) {
+            return back()->with("error", "One or more devices are either not found, not owned by the user, or not active.");
         }
 
         $deley_time = $request->delay_time * 1000 ?? rand(1000, 2500);
 
-        if ($device->status != "active") {
-            return back()->with("error", "Device is not active");
-        }
+
+
+
 
 
         $receivers = $this->changeReceiversToArray($request->receivers);
@@ -68,8 +71,8 @@ class SenderController extends Controller
         $receivers = array_map('trim', $receivers);
 
 
-        $response = Http::post(env("SENDER_URL").'/send', [
-            'sesId' => $device->id,
+        $response = Http::post(env("SENDER_URL") . '/send', [
+            'sessionIds' => $request->device_ids,
             'message' => $request->message,
             'phones' => $receivers,
             'delayTime' => $deley_time,
@@ -82,6 +85,8 @@ class SenderController extends Controller
         return back()->with("success", "Message sent successfully");
 
     }
+
+
 
     public function messageCallback(Request $request)
     {
@@ -96,6 +101,8 @@ class SenderController extends Controller
 
         Log::info($data);
     }
+
+
     public function changeReceiversToArray($receivers)
     {
         if (is_array($receivers)) {
