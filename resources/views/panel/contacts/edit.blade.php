@@ -25,33 +25,38 @@
                                 <div class="row">
                                     <form action="{{ route('panel.contacts.update', $contact) }}" method="POST">
                                         @csrf
-                                        @method("PUT")
+                                        @method('PUT')
                                         <div class="col-md-4 col-12 mx-auto">
-                                        @include('panel.validation-show.index')
+                                            @include('panel.validation-show.index')
 
                                             <div class="mb-3">
                                                 <label for="name" class="form-label">Name</label>
                                                 <input name="name" id="name" class="form-control"
-                                                    placeholder="Enter Contact Name"  value="{{ $contact->name }}">
+                                                    placeholder="Enter Contact Name" value="{{ $contact->name }}">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="name" class="form-label">Phone</label>
                                                 <input name="phone" id="name" class="form-control"
-                                                    placeholder="Enter Contact Phone" required value="{{ $contact->phone }}">
+                                                    placeholder="Enter Contact Phone" required
+                                                    value="{{ $contact->phone }}">
                                             </div>
 
                                             <div class="mb-3">
-                                                <label for="contact_group_id" class="form-label">Select Contact Group</label>
+                                                <label for="contact_group_id" class="form-label">Select Contact
+                                                    Group</label>
                                                 <select name="contact_group_id" id="" class="form-select">
                                                     <option value=""></option>
                                                     @foreach ($contactGroups as $group)
-                                                        <option {{ $contact->contact_group_id == $group->id ? 'selected' : '' }} value="{{ $group->id }}">{{ $group->name }}
+                                                        <option
+                                                            {{ $contact->contact_group_id == $group->id ? 'selected' : '' }}
+                                                            value="{{ $group->id }}">{{ $group->name }}
                                                         </option>
                                                     @endforeach
                                                 </select>
                                             </div>
 
-                                            <button type="submit" class="form-control bg-primary text-white">Create</button>
+                                            <button type="submit"
+                                                class="form-control bg-primary text-white">Create</button>
 
 
                                         </div>
