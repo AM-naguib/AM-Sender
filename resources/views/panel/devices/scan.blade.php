@@ -26,7 +26,7 @@
                                     <h3 class="text-center py-2 d-inline-block">Device Name : {{ $device->name }}</h3>
                                     @if (!isset($res['status']))
                                         <div class="col-12 text-center">
-                                            <img src="{{ $res['qrCodeURL'] ?? "" }}" alt="">
+                                            <img src="{{ $res['qrCodeURL'] ?? "" }}" alt="" width="100%">
                                         </div>
                                         <div class="col-12 text-center p-2">
                                             <h1>How to scan</h1>
