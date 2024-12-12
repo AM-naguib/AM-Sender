@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('username')->unique();
             $table->string('phone')->unique();
-            $table->text('auth_key')->unique();
+            $table->string('auth_key', 255)->unique();
             $table->boolean("verified")->default(0);
             $table->integer("count_sended")->default(0);
             $table->string('password');
