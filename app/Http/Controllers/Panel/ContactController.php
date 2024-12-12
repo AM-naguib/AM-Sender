@@ -134,6 +134,6 @@ class ContactController extends Controller
 
         Excel::import($import, $request->file('file'));
 
-        return back()->with('success', 'تم استيراد البيانات بنجاح!');
+        return back()->with('success', 'Contacts imported successfully.');
     }
 }
