@@ -1,5 +1,5 @@
 <meta charset="utf-8">
-<title>Simple HTML Demo - Home</title>
+<title>AM-Sender - Home</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link href="{{asset("front")}}/css/vendors/aos.css" rel="stylesheet">
 <link href="{{asset("front")}}/style.css" rel="stylesheet">
