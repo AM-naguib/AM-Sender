@@ -13,9 +13,14 @@ use Illuminate\Support\Facades\Http;
 
 class ScrapGroupController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $groups = Group::where("user_id", auth()->user()->id)->paginate(20);
+        if ($request->name != null) {
+            $groups = Group::where("user_id", auth()->user()->id)
+                ->where("name", "like", "%" . $request->name . "%")
+                ->paginate(20);
+        }
         $devices = Device::where("user_id", auth()->user()->id)->where("status", "active")->get();
         return view("panel.groups.index", compact("groups", "devices"));
     }
