@@ -31,7 +31,7 @@
 
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Select Device</label>
-                                                <select name="device_id" id="" class="form-select">
+                                                <select name="device_ids[]" id="" class="form-select">
                                                     @forelse ($devices as $device)
                                                         <option @selected($device->id == old('device_id')) value="{{ $device->id }}">
                                                             {{ $device->name }}</option>

@@ -36,7 +36,7 @@ class SenderController extends Controller
         return view("panel.sender.bulk", compact("devices", "contactGroups", "messageTemplates"));
     }
 
-
+ 
     public function send(Request $request)
     {
 
