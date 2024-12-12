@@ -4,11 +4,14 @@ use Illuminate\Http\Request;
 use App\Events\SessionStatusEvent;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SignupController;
+use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Panel\PanelController;
 use App\Http\Controllers\Panel\DeviceController;
 use App\Http\Controllers\Panel\SenderController;
 use App\Http\Controllers\Panel\ContactController;
 use App\Http\Controllers\Panel\MessageController;
+use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\Panel\ScrapGroupController;
 use App\Http\Controllers\Panel\ContactGroupController;
 use App\Http\Controllers\Panel\MessageTemplateController;
@@ -69,7 +72,7 @@ Route::prefix("panel")->name("panel.")->middleware("auth")->group(function () {
     Route::post("auth_key", [PanelController::class, "authKeyUpdate"])->name("auth_key.update");
 
     Route::resource("groups", ScrapGroupController::class);
-    
+
 
 
 
@@ -95,5 +98,20 @@ Route::post("login", [AuthController::class, "loginStore"])->name("login.store")
 
 Route::post("logout", [AuthController::class, "logout"])->name("logout")->middleware("auth");
 
+Route::get("signup", [SignupController::class, "index"])->name("signup")->middleware("guest");
+Route::post("signup", [SignupController::class, "store"])->name("signup.store")->middleware("guest");
+
+
+Route::get("forgot-password", [ForgotPasswordController::class, "index"])->name("forgot-password")->middleware("guest");
+
+Route::post("send-otp", [ForgotPasswordController::class, "sendOtp"])->name("send-otp")->middleware("guest");
+
+Route::post("submit-otp", [ForgotPasswordController::class, "submitOtp"])->name("submit-otp")->middleware("guest");
+
+
+
+Route::controller(HomeController::class)->name("front.")->group(function () {
+    Route::get("/", "index")->name("index");
+});
 
 

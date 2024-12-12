@@ -17,9 +17,10 @@ class UserSeeder extends Seeder
 
         User::create([
             "name" => "Admin",
-            "username" => "admin",
-            "password" => bcrypt("password"),
-            "email" => "admin",
+            "username" => "1",
+            "phone" => "201120488336",
+            "verified" => 1,
+            "password" => bcrypt("1"),
             "auth_key" => $randomString,
         ]);
 
@@ -28,8 +29,9 @@ class UserSeeder extends Seeder
         User::create([
             "name" => "Admin1",
             "username" => "admin1",
-            "password" => bcrypt("password"),
-            "email" => "admin1",
+            "phone" => "12345678950",
+            "verified" => 0,
+            "password" => bcrypt("1"),
             "auth_key" => $randomString
 
 
