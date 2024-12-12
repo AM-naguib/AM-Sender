@@ -12,7 +12,7 @@
                     </span>
                 </a>
                 <!-- Light Logo-->
-                <a href="index.html" class="logo logo-light">
+                <a href="{{ route('panel.index') }}" class="logo logo-light">
                     <span class="logo-sm">
                         <p class="text-white m-0 fw-semibold " style="font-size: 30px;">AM</p>
 
