@@ -24,7 +24,7 @@
                                     Group</a>
                             </div>
                             <div class="row">
-                                <div class="col-md-3 col-12 mt-2 mx-2">
+                                <div class="col-md-3 col-11 mt-2 mx-2">
                                     <form action="{{route("panel.contact-groups.index")}}" method="get" class="d-flex align-items-center gap-2">
                                         <input type="text" value="{{request()->name ?? ""}}" name="name" id="name" class="form-control" placeholder="Search By Name">
                                         <button class="btn btn-primary">Search</button>
