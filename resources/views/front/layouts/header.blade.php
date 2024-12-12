@@ -68,12 +68,20 @@
 
         <!-- Desktop sign in links -->
         <ul class="cdrow celda cfxr2 cnzyi c4a2s">
+            @auth
+            <li>
+                <a class="cc3qo ctwfu cbzch c2htu cwq93" href="{{ route('panel.index') }}">Dashboard</a>
+            </li>
+            @endauth
+            @guest
             <li>
                 <a class="c2np1 c3ns1 cgwj6 c2htu cwq93" href="{{ route('login') }}">Login</a>
             </li>
             <li>
                 <a class="cc3qo ctwfu cbzch c2htu cwq93" href="{{ route('signup') }}">Register</a>
             </li>
+
+            @endguest
         </ul>
 
         <!-- Mobile menu -->
