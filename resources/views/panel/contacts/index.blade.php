@@ -29,6 +29,15 @@
                                         Contacts</button>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-3 col-12 mt-2 mx-2">
+                                    <form action="{{route("panel.contacts.index")}}" method="get" class="d-flex align-items-center gap-2">
+                                        <input type="text" name="phone" id="phone" class="form-control" placeholder="Search By Phone">
+                                        <button class="btn btn-primary">Search</button>
+                                        <a href="{{route("panel.contacts.index")}}" class="btn btn-danger">Clear</a>
+                                    </form>
+                                </div>
+                            </div>
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-12">

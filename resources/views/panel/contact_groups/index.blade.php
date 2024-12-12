@@ -23,6 +23,15 @@
                                 <a href="{{ route('panel.contact-groups.create') }}" class="btn btn-primary">Create Contact
                                     Group</a>
                             </div>
+                            <div class="row">
+                                <div class="col-md-3 col-12 mt-2 mx-2">
+                                    <form action="{{route("panel.contact_groups.index")}}" method="get" class="d-flex align-items-center gap-2">
+                                        <input type="text" name="name" id="name" class="form-control" placeholder="Search By Name">
+                                        <button class="btn btn-primary">Search</button>
+                                        <a href="{{route("panel.contact_groups.index")}}" class="btn btn-danger">Clear</a>
+                                    </form>
+                                </div>
+                            </div>
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-12">

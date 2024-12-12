@@ -18,13 +18,19 @@ class ContactController extends Controller
     {
 
         $searchName = null;
+        $contacts = Contact::where("user_id", auth()->user()->id)->paginate(20);
         if($request->cg != null){
             $contacts = Contact::where("user_id", auth()->user()->id)->where("contact_group_id", $request->cg)->paginate(20);
             $searchName = ContactGroup::where("user_id", auth()->user()->id)->where("id", $request->cg)->first();
-        }else{
-            $contacts = Contact::where("user_id", auth()->user()->id)->paginate(20);
-
         }
+
+
+        if ($request->phone != null) {
+            $contacts = Contact::where("user_id", auth()->user()->id)
+                                ->where("phone", "like", "%" . $request->phone . "%")
+                                ->paginate(20);
+        }
+
         $contactGroups = ContactGroup::where("user_id", auth()->user()->id)->get();
 
         return view("panel.contacts.index", compact("contacts", "contactGroups", "searchName"));

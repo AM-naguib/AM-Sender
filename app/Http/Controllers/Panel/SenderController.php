@@ -40,7 +40,6 @@ class SenderController extends Controller
     public function send(Request $request)
     {
 
-
         $data = $request->validate([
             "device_ids" => "required",
             "receivers" => "required",
@@ -51,9 +50,9 @@ class SenderController extends Controller
 
 
         $devices = Device::whereIn('id', $request->device_ids)
-            ->where('user_id', auth()->user()->id)
-            ->where('status', 'active')
-            ->get();
+        ->where('user_id', auth()->user()->id)
+        ->where('status', 'active')
+        ->get();
 
         if ($devices->count() != count($request->device_ids)) {
             return back()->with("error", "One or more devices are either not found, not owned by the user, or not active.");
