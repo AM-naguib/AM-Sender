@@ -30,7 +30,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-3 col-12 mt-2 mx-2">
+                                <div class="col-md-3 col-11 mt-2 mx-2">
                                     <form action="{{route("panel.contacts.index")}}" method="get" class="d-flex align-items-center gap-2">
                                         <input type="text" value="{{request()->phone ?? ""}}" name="phone" id="phone" class="form-control" placeholder="Search By Phone">
                                         <button class="btn btn-primary">Search</button>
