@@ -24,9 +24,22 @@
                             <div class="card-body">
                                 <div class="row" id="deviceStatus">
                                     <h3 class="text-center py-2 d-inline-block">Device Name : {{ $device->name }}</h3>
+                                    <style>
+                                        #qrcode {
+                                            width: auto;
+                                            /* الحجم الطبيعي للصورة في الشاشات الكبيرة */
+                                        }
+
+                                        @media (max-width: 600px) {
+                                            #qrcode {
+                                                width: 100%;
+                                                /* في الشاشات الصغيرة تكون 100% */
+                                            }
+                                        }
+                                    </style>
                                     @if (!isset($res['status']))
                                         <div class="col-12 text-center">
-                                            <img src="{{ $res['qrCodeURL'] ?? "" }}" alt="" width="100%">
+                                            <img src="{{ $res['qrCodeURL'] ?? '' }}" alt="" id="qrcode">
                                         </div>
                                         <div class="col-12 text-center p-2">
                                             <h1>How to scan</h1>
@@ -42,8 +55,9 @@
                                                 style='font-size:50px;'>&#128640;</span>
                                         </div>.
                                         <div class="col-8 mx-auto text-center">
-                                            <a href="{{route("panel.sender.single")}}" class="btn btn-primary">Single Send</a>
-                                            <a href="{{route("panel.sender.bulk")}}" class="btn btn-primary">Bulk Send</a>
+                                            <a href="{{ route('panel.sender.single') }}" class="btn btn-primary">Single
+                                                Send</a>
+                                            <a href="{{ route('panel.sender.bulk') }}" class="btn btn-primary">Bulk Send</a>
                                         </div>
                                     @endif
                                 </div>
@@ -82,7 +96,7 @@
 
         var channel = pusher.subscribe('{{ $device->id }}');
         channel.bind('sessionstatus', function(data) {
-        console.log(data);
+            console.log(data);
 
             $("#deviceStatus").load(location.href + " #deviceStatus");
 
