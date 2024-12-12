@@ -12,9 +12,15 @@ class ContactGroupController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $contactGroups = ContactGroup::where("user_id", auth()->user()->id)->paginate(20);
+
+        if ($request->name != null) {
+            $contactGroups = ContactGroup::where("user_id", auth()->user()->id)
+                ->where("name", "like", "%" . $request->name . "%")
+                ->paginate(20);
+        }
         return view("panel.contact_groups.index", compact("contactGroups"));
     }
 
