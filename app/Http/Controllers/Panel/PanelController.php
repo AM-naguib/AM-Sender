@@ -12,19 +12,18 @@ use App\Http\Controllers\Controller;
 
 class PanelController extends Controller
 {
-    public function index(){
+    public function index()
+    {
+        $userStats = auth()->user()->loadCount(['devices', 'messages', 'contacts', 'messageTemplates']);
 
-        $devices = Device::where("user_id", auth()->user()->id)->get()->count();
-
-        $messages = Message::where("user_id", auth()->user()->id)->get()->count();
-
-        $contacts = Contact::where("user_id", auth()->user()->id)->get()->count();
-
-        $message_templates = MessageTemplate::where("user_id", auth()->user()->id)->get()->count();
-
-
-        return view('panel.index', compact("devices", "messages", "contacts", "message_templates"));
+        return view('panel.index', [
+            'devices' => $userStats->devices_count,
+            'messages' => $userStats->messages_count,
+            'contacts' => $userStats->contacts_count,
+            'message_templates' => $userStats->message_templates_count,
+        ]);
     }
+
 
     public function logs(){
         $logs = Message::where("user_id", auth()->user()->id)->get();

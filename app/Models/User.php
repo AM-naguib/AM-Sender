@@ -40,8 +40,24 @@ class User extends Authenticatable
     ];
 
 
+    public function devices()
+    {
+        return $this->hasMany(Device::class);
+    }
+
     public function messages()
     {
         return $this->hasMany(Message::class);
     }
+
+    public function contacts()
+    {
+        return $this->hasMany(Contact::class);
+    }
+
+    public function messageTemplates()
+    {
+        return $this->hasMany(MessageTemplate::class);
+    }
+
 }
