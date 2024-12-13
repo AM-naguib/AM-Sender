@@ -3,16 +3,27 @@
 namespace App\Http\Controllers\Panel;
 
 
+use App\Models\Device;
+use App\Models\Contact;
 use App\Models\Message;
 use Illuminate\Http\Request;
+use App\Models\MessageTemplate;
 use App\Http\Controllers\Controller;
 
 class PanelController extends Controller
 {
     public function index(){
 
+        $devices = Device::where("user_id", auth()->user()->id)->get()->count();
 
-        return view('panel.index');
+        $messages = Message::where("user_id", auth()->user()->id)->get()->count();
+
+        $contacts = Contact::where("user_id", auth()->user()->id)->get()->count();
+
+        $message_templates = MessageTemplate::where("user_id", auth()->user()->id)->get()->count();
+
+
+        return view('panel.index', compact("devices", "messages", "contacts", "message_templates"));
     }
 
     public function logs(){
