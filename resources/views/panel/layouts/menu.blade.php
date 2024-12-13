@@ -98,7 +98,7 @@
 
                         <li class="nav-item">
                             <a class="nav-link menu-link active" style=""
-                                href="{{ route('panel.massage-templates.index') }}">
+                                href="{{ route('panel.message-templates.index') }}">
                                 <i class="mdi mdi-text-box-multiple-outline"></i> <span data-key="t-widgets">Message
                                     Templates</span>
                             </a>

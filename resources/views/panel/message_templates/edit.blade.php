@@ -23,7 +23,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <form action="{{ route('panel.massage-templates.update', $massage_template) }}" method="POST">
+                                    <form action="{{ route('panel.message-templates.update', $massage_template) }}" method="POST">
                                         @csrf
                                         @method('PUT')
                                         <div class="col-md-4 col-12 mx-auto">

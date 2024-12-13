@@ -31,7 +31,7 @@ class MessageTemplateController extends Controller
             "message" => $data["message"],
             "user_id" => auth()->user()->id
         ]);
-        return redirect()->route("panel.massage-templates.index")->with("success", "Message template created successfully");
+        return redirect()->route("panel.message-templates.index")->with("success", "Message template created successfully");
     }
 
 
@@ -56,7 +56,7 @@ class MessageTemplateController extends Controller
             "name" => $data["name"],
             "message" => $data["message"],
         ]);
-        return redirect()->route("panel.massage-templates.index")->with("success", "Message template updated successfully");
+        return redirect()->route("panel.message-templates.index")->with("success", "Message template updated successfully");
     }
 
     public function destroy(MessageTemplate $massage_template){
@@ -64,7 +64,7 @@ class MessageTemplateController extends Controller
             abort(403);
         }
         $massage_template->delete();
-        return redirect()->route("panel.massage-templates.index")->with("success", "Message template deleted successfully");
+        return redirect()->route("panel.message-templates.index")->with("success", "Message template deleted successfully");
     }
 
 

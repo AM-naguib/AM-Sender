@@ -20,7 +20,7 @@
                         <div class="card">
                             <div class="card-header d-flex justify-content-between align-items-center">
                                 <h4 class="card-title mb-0">Message Templates</h4>
-                                <a href="{{ route('panel.massage-templates.create') }}" class="btn btn-primary">Create Message Template</a>
+                                <a href="{{ route('panel.message-templates.create') }}" class="btn btn-primary">Create Message Template</a>
                             </div>
                             <div class="card-body">
                                 <div class="row">
@@ -42,8 +42,8 @@
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $template->name }}</td>
                                                         <td class="d-flex gap-2">
-                                                            <a href="{{ route('panel.massage-templates.edit', $template->id) }}" class="btn btn-primary">Edit</a>
-                                                            <form action="{{ route('panel.massage-templates.destroy', $template->id) }}" method="post">
+                                                            <a href="{{ route('panel.message-templates.edit', $template->id) }}" class="btn btn-primary">Edit</a>
+                                                            <form action="{{ route('panel.message-templates.destroy', $template->id) }}" method="post">
                                                                 @csrf
                                                                 @method('delete')
                                                                 <button class="btn btn-danger">Delete</button>

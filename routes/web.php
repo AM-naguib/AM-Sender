@@ -45,7 +45,7 @@ Route::prefix("panel")->name("panel.")->middleware("auth")->group(function () {
 
     Route::resource("devices", DeviceController::class)->except("show");
 
-    Route::resource("massage-templates", MessageTemplateController::class)->except("show");
+    Route::resource("message-templates", MessageTemplateController::class)->except("show");
 
     Route::resource("contact-groups", ContactGroupController::class)->except("show");
 

@@ -40,7 +40,7 @@
                                             </div>
                                         @endif
                                     </div>
-                                    <form action="{{ route('panel.massage-templates.store') }}" method="POST">
+                                    <form action="{{ route('panel.message-templates.store') }}" method="POST">
                                         @csrf
                                         <div class="col-md-4 col-12 mx-auto">
                                             @include('panel.validation-show.index')
