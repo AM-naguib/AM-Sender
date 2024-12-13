@@ -41,7 +41,7 @@
                                             <div>
                                                 <div class="avatar-sm flex-shrink-0">
                                                     <span class="avatar-title bg-primary rounded-circle fs-2">
-                                                        <i data-feather="users"></i>
+                                                        <i data-feather="tablet"></i>
                                                     </span>
                                                 </div>
                                             </div>
@@ -87,7 +87,7 @@
                                             <div>
                                                 <div class="avatar-sm flex-shrink-0">
                                                     <span class="avatar-title bg-danger rounded-circle fs-2">
-                                                        <i data-feather="activity"></i>
+                                                        <i data-feather="user"></i>
                                                     </span>
                                                 </div>
                                             </div>
@@ -110,7 +110,7 @@
                                             <div>
                                                 <div class="avatar-sm flex-shrink-0">
                                                     <span class="avatar-title bg-danger rounded-circle fs-2">
-                                                        <i data-feather="arrow-left-circle"></i>
+                                                        <i data-feather="message-square"></i>
                                                     </span>
                                                 </div>
                                             </div>

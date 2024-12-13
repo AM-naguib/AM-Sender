@@ -39,13 +39,13 @@
 
                         <li class="nav-item">
                             <a class="nav-link menu-link active" style="" href="{{ route('panel.index') }}">
-                                <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">Dashboard</span>
+                                <i class="mdi mdi-view-dashboard"></i> <span data-key="t-widgets">Dashboard</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link menu-link active" style=""
                                 href="{{ route('panel.devices.index') }}">
-                                <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">Devices</span>
+                                <i class="mdi mdi-cellphone"></i> <span data-key="t-widgets">Devices</span>
                             </a>
                         </li>
 
@@ -53,7 +53,7 @@
                         <li class="nav-item">
                             <a class="nav-link menu-link active" style=""
                                 href="{{ route('panel.groups.index') }}">
-                                <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">Groups Scraper</span>
+                                <i class="mdi mdi-account-group"></i> <span data-key="t-widgets">Groups Scraper</span>
                             </a>
                         </li>
 
@@ -62,28 +62,28 @@
                         <li class="nav-item">
                             <a class="nav-link menu-link active" style=""
                                 href="{{ route('panel.contact-groups.index') }}">
-                                <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">Contact Groups</span>
+                                <i class="mdi mdi-account-multiple"></i> <span data-key="t-widgets">Contact Groups</span>
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link menu-link active" style=""
                                 href="{{ route('panel.contacts.index') }}">
-                                <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">Contact</span>
+                                <i class="mdi mdi-account-box-outline"></i> <span data-key="t-widgets">Contact</span>
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link menu-link active" style=""
                                 href="{{ route('panel.sender.single') }}">
-                                <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">Single Sender</span>
+                                <i class="mdi mdi-send-variant-outline"></i> <span data-key="t-widgets">Single Sender</span>
                             </a>
                         </li>
 
 
                         <li class="nav-item">
                             <a class="nav-link menu-link active" style="" href="{{ route('panel.sender.bulk') }}">
-                                <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">Bulk Sender</span>
+                                <i class="mdi mdi-comment-multiple-outline"></i> <span data-key="t-widgets">Bulk Sender</span>
                             </a>
                         </li>
 
@@ -92,14 +92,14 @@
                         <li class="nav-item">
                             <a class="nav-link menu-link active" style=""
                                 href="{{ route('panel.messages.index') }}">
-                                <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">Massages Log</span>
+                                <i class="mdi mdi-math-log"></i> <span data-key="t-widgets">Massages Log</span>
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link menu-link active" style=""
                                 href="{{ route('panel.massage-templates.index') }}">
-                                <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">Message
+                                <i class="mdi mdi-text-box-multiple-outline"></i> <span data-key="t-widgets">Message
                                     Templates</span>
                             </a>
                         </li>
@@ -107,14 +107,14 @@
                         <li class="nav-item">
                             <a class="nav-link menu-link active" style=""
                                 href="{{ route('panel.profile.index') }}">
-                                <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">Profile</span>
+                                <i class="mdi mdi-cog"></i> <span data-key="t-widgets">Profile</span>
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link menu-link active" style=""
                                 href="{{ route('panel.auth_key.index') }}">
-                                <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">Auth Key</span>
+                                <i class="mdi mdi-key"></i> <span data-key="t-widgets">Auth Key</span>
                             </a>
                         </li>
 
